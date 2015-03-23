@@ -1,6 +1,17 @@
 @extends('app')
 
 @section('content')
+  <section class="title">
+    <div class="container">
+      <div class="row-fluid">
+        <div class="span6">
+          <h1>Registration</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- / .title --> 
+
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
@@ -18,12 +29,13 @@
 						</div>
 					@endif
 
-					<form class="form-horizontal" role="form" method="POST" action="/auth/register">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+<section id="registration-page" class="container">
+<form class="form-horizontal" role="form" method="POST" action="/auth/register">
+<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Name</label>
-							<div class="col-md-6">
+<div class="form-group">
+<label class="col-md-4 control-label">Name</label>
+<div class="col-md-6">
 								<input type="text" class="form-control" name="name" value="{{ old('name') }}">
 							</div>
 						</div>

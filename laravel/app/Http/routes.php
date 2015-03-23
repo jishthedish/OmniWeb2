@@ -11,26 +11,30 @@
 |
 */
 
-/* From the lessons
-Route::get('/', 'OmniController@index');
-Route::get('about', 'OmniController@about');
+Route::get('/', 'HomeController@index');
 
-Route::get('lessons/{id}','OmniController@show');
-*/ 
-
+Route::get('home', 'HomeController@index');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
-	'home' => 'Auth\AuthController',
 ]);
- 
-// Add campaign
-Route::get('/campaigns', 'OmniController@campaigns');
-Route::post('/campaigns/add',['as' => 'addentry', 'uses' => 'OmniController@addcampaigns']);
+
+Route::get('downloads', 'pagesController@downloads');
+Route::get('promotions', 'PagesController@promotions');
+Route::get('aboutus', 'PagesController@aboutus');
+Route::get('contactus', 'PagesController@contactus');
+Route::get('services', 'PagesController@services');
+Route::get('registration', 'PagesController@registration');
+
+Route::get('campaigns', 'OmniController@campaigns');
+Route::post('campaigns/add',['as' => 'addentry', 'uses' => 'OmniController@add']);
 //Get Campaign
-Route::get('/campaigns/get/{filename}', ['as' => 'getentry', 'uses' => 'OmniController@getcampaigns']);
-Route::get('/getcampaigns', 'OmniController@getAll');
+Route::get('/campaigns/get/{filename}', ['as' => 'getentry', 'uses' => 'OmniController@get']);
+Route::get('getcampaigns', 'OmniController@getAll');
+
+//Remove Campaign
+Route::get('/campaigns/truncate','OmniController@delete');
 
 //Remove All data
 Route::get('/truncate','OmniController@delete');
@@ -39,3 +43,4 @@ Route::get('/truncate','OmniController@delete');
 Route::get('/contacts', 'OmniController@contacts');
 Route::post('/contacts/add', ['as' => 'addcontacts', 'uses' => 'OmniController@postUpload']);
 Route::get('/getcontacts', 'OmniController@getcontacts');
+
